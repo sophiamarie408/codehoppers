@@ -6,10 +6,10 @@ import pygame
 from pygame.locals import *
 
 # 2 - Set game global variables ################################################
-boardsize = (512, 512)
+boardsize = (550, 550)
 screen = pygame.display.set_mode(boardsize)
 width, height, margin = 100, 100, 2
-BLACK = (0, 0, 0)
+WHITE = (255,255,255)
 WHITE = (255,255,255)
 grid = [] # 2D array (list of lists) for board
 player = pygame.image.load('player.jpg').convert()
@@ -59,8 +59,8 @@ def updateBoard():
 ## 3d - Adjust score and print out a message if increased
 def adjustScore(scoreP):
   if grid[playerCoord[0]][playerCoord[1]] >= 10:
-    scoreP += 1
-    print("You have learned "+str(scoreP)+" of the Core 4")
+    scoreP += 2
+    print("You have played the game "+str(scoreP)+" edited by sophia")
   return scoreP
 
 ## 3e - Handle player movement
@@ -109,7 +109,7 @@ def gameFunct():
   initBoard()
   clock = pygame.time.Clock()
   score = 0
-  print("Collect all of the Core 4 to increase your knowledge!\n")
+  print("Collect all of the pollen from the flowers to increase your score\!\n")
   ## 4b - keep looping until exit condition met
   while (score < 4):
     score = movePlayer(score)  # Handle player movement
@@ -117,8 +117,8 @@ def gameFunct():
     clock.tick(60) # In milliseconds (https://www.pygame.org/docs/ref/time.html)
     pygame.display.flip() # Redraw the board
     if score == 4: # Check for exit condition congratulatory message
-      print("Congratulations on learning all of the Core 4!")
-      print("Now practice practice practice and create cool code!")
+      print("Congratulations on collecting all of the pollen from the flowers!")
+      print("Play again to try and get the pollen faster!")
   pygame.quit() # Quit the game
 
 # Run automatically upon load/F5 ###############################################
